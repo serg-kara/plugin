@@ -3,7 +3,7 @@
 
     var Defined = {
       use_api: 'lampac',
-      localhost: 'http://bwa-cloud.cfhttp.top/sisi',
+      localhost: '{localhost}',
       vip_site: '',
       framework: ''
     };
@@ -522,7 +522,7 @@
 
     var ApiHttp$1 = new ApiHttp();
 
-    var Api = ApiHttp$1; //true ? ApiPWA$1 : ApiHttp$1;
+    var Api = ApiHttp$1; //Defined.use_api == 'pwa' ? ApiPWA$1 : ApiHttp$1;
 
     function Sisi(object) {
       var comp = new Lampa.InteractionMain(object);
@@ -705,7 +705,7 @@
     }
 
     function startPlugin() {
-      window['plugin_cloudsisi_' + Defined.use_api + '_ready'] = true;
+      window['plugin_sisi_' + Defined.use_api + '_ready'] = true;
       var unic_id = Lampa.Storage.get('sisi_unic_id', '');
 
       if (!unic_id) {
@@ -772,8 +772,8 @@
       function add() {
         var button = $("<li class=\"menu__item selector\">\n            <div class=\"menu__ico\">\n                <svg width=\"200\" height=\"243\" viewBox=\"0 0 200 243\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M187.714 130.727C206.862 90.1515 158.991 64.2019 100.983 64.2019C42.9759 64.2019 -4.33044 91.5669 10.875 130.727C26.0805 169.888 63.2501 235.469 100.983 234.997C138.716 234.526 168.566 171.303 187.714 130.727Z\" stroke=\"currentColor\" stroke-width=\"15\"/><path d=\"M102.11 62.3146C109.995 39.6677 127.46 28.816 169.692 24.0979C172.514 56.1811 135.338 64.2018 102.11 62.3146Z\" stroke=\"currentColor\" stroke-width=\"15\"/><path d=\"M90.8467 62.7863C90.2285 34.5178 66.0667 25.0419 31.7127 33.063C28.8904 65.1461 68.8826 62.7863 90.8467 62.7863Z\" stroke=\"currentColor\" stroke-width=\"15\"/><path d=\"M100.421 58.5402C115.627 39.6677 127.447 13.7181 85.2149 9C82.3926 41.0832 83.5258 35.4214 100.421 58.5402Z\" stroke=\"currentColor\" stroke-width=\"15\"/><rect x=\"39.0341\" y=\"98.644\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"90.8467\" y=\"92.0388\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"140.407\" y=\"98.644\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"116.753\" y=\"139.22\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"64.9404\" y=\"139.22\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"93.0994\" y=\"176.021\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/></svg>\n            </div>\n            <div class=\"menu__text\">\u041A\u043B\u0443\u0431\u043D\u0438\u0447\u043A\u0430</div>\n        </li>");
 
-        if (true) {
-          var pw = $('<div>c</div>');
+        if (Defined.use_api == 'pwa') {
+          var pw = $('<div>p</div>');
           pw.css({
             position: 'absolute',
             right: '-0.3em',
@@ -844,10 +844,10 @@
       }
     }
 
-    if (!window['plugin_cloudsisi_' + Defined.use_api + '_ready']) {
+    if (!window['plugin_sisi_' + Defined.use_api + '_ready']) {
       startPlugin();
       /*
-      if(true){
+      if(Defined.use_api == 'pwa'){
           let s = document.createElement('script')
               s.onload = function(){
                   Blazor.start({
